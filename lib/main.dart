@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/framework/dependency_injection/inject_config.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async{
+  await configureMainDependencies();
+
+  runApp(
+      ProviderScope(
+          child: const MyApp()
+      ),
+  );
+
 }
 
 class MyApp extends StatelessWidget {
