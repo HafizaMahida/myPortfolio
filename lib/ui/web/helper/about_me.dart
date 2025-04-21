@@ -14,7 +14,7 @@ class AboutMe extends ConsumerWidget {
   Widget build(BuildContext context,WidgetRef ref,) {
     final mainWatch  = ref.watch(mainController);
     return SizedBox(
-     // key: mainWatch.aboutMeKey,
+      key: mainWatch.aboutMeKey,
       height: context.height,
       width: context.width,
       child: Row(
@@ -52,10 +52,47 @@ class AboutMe extends ConsumerWidget {
                   style: TextStyles.regular.copyWith(
                     color: AppColors.black,
                     fontSize: 14.sp,
+                    fontFamily: TextStyles.secondaryFontFamily
                   ),
                   textAlign: TextAlign.center,
                   maxLines: 10,
                 ),
+                SizedBox(
+                  height: context.height*0.06,
+                ),
+                MouseRegion(
+                  child: GestureDetector(
+                    onTap: (){
+                      print("Button is Clicked");
+                    },
+                  
+                    child: Container(
+                      height:110.h,
+                      width: 150.w,
+                      decoration: BoxDecoration(
+                        color: AppColors.lightPrimary2,
+                        borderRadius: BorderRadius.circular(15.r),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "DOWNLOAD CV",
+                            style: TextStyles.semiBold.copyWith(
+                              color: AppColors.white,
+                              fontSize: 13.sp,
+                            ),
+                          ),
+                          Icon(
+                            Icons.download,
+                            color: AppColors.white,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           )
