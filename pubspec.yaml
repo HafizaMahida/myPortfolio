@@ -43,6 +43,12 @@ dependencies:
   get_it: 8.0.3
   json_annotation: 4.9.0
 
+  flutter_screenutil: 5.9.3
+
+  # Assets
+  cached_network_image: 3.4.1
+  lottie: 3.3.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -69,6 +75,30 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/anim/
+    - assets/fonts/
+
+  fonts:
+    - family: Alumni Sans Pinstripe
+      fonts:
+        - asset: assets/fonts/Alumni_Sans_Pinstripe/AlumniSansPinstripe-Italic.ttf
+        - asset: assets/fonts/Alumni_Sans_Pinstripe/AlumniSansPinstripe-Regular.ttf
+    - family: ChakraPetch
+      fonts:
+        - asset: assets/fonts/ChakraPetch/ChakraPetch-Regular.ttf
+        - asset: assets/fonts/ChakraPetch/ChakraPetch-Bold.ttf
+        - asset: assets/fonts/ChakraPetch/ChakraPetch-BoldItalic.ttf
+        - asset: assets/fonts/ChakraPetch/ChakraPetch-Italic.ttf
+        - asset: assets/fonts/ChakraPetch/ChakraPetch-Light.ttf
+        - asset: assets/fonts/ChakraPetch/ChakraPetch-LightItalic.ttf
+        - asset: assets/fonts/ChakraPetch/ChakraPetch-Medium.ttf
+        - asset: assets/fonts/ChakraPetch/ChakraPetch-MediumItalic.ttf
+        - asset: assets/fonts/ChakraPetch/ChakraPetch-SemiBold.ttf
+        - asset: assets/fonts/ChakraPetch/ChakraPetch-SemiBoldItalic.ttf
+    - family: LimeLight
+      fonts:
+        - asset: assets/fonts/LimeLight/LimeLight-Regular.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
