@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import 'package:portfolio/framework/controller%20/main_controller.dart';
+import 'package:portfolio/framework/controller/main_controller.dart';
 import 'package:portfolio/framework/extensions/context_extensions.dart';
 import 'package:portfolio/ui/theme/app_colors.dart';
 import 'package:portfolio/ui/theme/text_style.dart';
@@ -41,14 +41,14 @@ class AboutMe extends ConsumerWidget {
                   ),
                 ),
                 Text(
-                  "Hafiza Mahida",
+                  mainWatch.aboutMeData.name??'Hafiza',
                   style: TextStyles.bold.copyWith(
                     color: AppColors.black,
                     fontSize: 50.sp,
                   ),
                 ),
                 Text(
-                  "A mobile app developer with 2 years of experience building high-quality, responsive applications for Android, iOS, and Web using Flutter, Jetpack Compose, and native platforms. Specialized in crafting seamless cross-platform experiences, with a strong focus on responsive UI, performance, and scalable architecture.",
+                    mainWatch.aboutMeData.description??'Description',
                   style: TextStyles.regular.copyWith(
                     color: AppColors.black,
                     fontSize: 14.sp,
@@ -62,8 +62,9 @@ class AboutMe extends ConsumerWidget {
                 ),
                 MouseRegion(
                   child: GestureDetector(
-                    onTap: (){
-                      print("Button is Clicked");
+                    onTap: ()async{
+                      /// Download resume code
+                      mainWatch.downloadFileWeb();
                     },
                   
                     child: Container(

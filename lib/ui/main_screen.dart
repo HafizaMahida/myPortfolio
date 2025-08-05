@@ -1,12 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/framework/controller/main_controller.dart';
 import 'package:portfolio/framework/extensions/context_extensions.dart';
 import 'package:portfolio/ui/theme/app_colors.dart';
 import 'package:portfolio/ui/web/helper/about_me.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
 
+  @override
+  ConsumerState<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends ConsumerState<MainScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    final mainRead =ref.read(mainController);
+    SchedulerBinding.instance.addPostFrameCallback((callback) async{
+     await  mainRead.getFirebaseData();
+    });
+
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
