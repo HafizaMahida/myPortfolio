@@ -5,8 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/framework/controller/main_controller.dart';
 import 'package:portfolio/framework/extensions/context_extensions.dart';
 import 'package:portfolio/ui/theme/app_colors.dart';
-import 'package:portfolio/ui/web/helper/about_me.dart';
+import 'package:portfolio/ui/experience/web/experience.dart';
 
+import 'about_me/web/about_me.dart';
 class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
 
@@ -29,12 +30,35 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: AppColors.white,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        forceMaterialTransparency: true,
+        elevation: 1,
+        shadowColor: AppColors.clr696969.withAlpha(1),
+        actions: [
+          InkWell(
+              onTap: (){
+                ref.read(mainController).scrollToPage(ref.read(mainController).aboutMeKey,context);
+              },
+              child: Text('Hafiza')),
+          Text('Hafiza'),
+          InkWell(
+              onTap: (){
+                ref.read(mainController).scrollToPage(ref.read(mainController).experienceKey,context);
+              },
+              child: Text('Muskan'),
+          ),
+          Text('Shabbir'),
+        ],
+      ),
       body: SingleChildScrollView(
+        controller: ref.read(mainController).scrollController,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: context.width*0.025),
           child: Column(
             children: [
               AboutMe(),
+              ExperiencePage(),
             ],
           ),
         ),

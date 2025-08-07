@@ -16,6 +16,31 @@ class MainController extends ChangeNotifier{
 
   /// Keys
   GlobalKey aboutMeKey = GlobalKey();
+  GlobalKey experienceKey = GlobalKey();
+
+  /// Scroll controller
+  ScrollController scrollController = ScrollController();
+
+  /// Navigate to pages
+  void scrollToPage(GlobalKey targetKey, BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      RenderBox? renderBox = targetKey.currentContext?.findRenderObject() as RenderBox?;
+      if (renderBox != null) {
+        final position = renderBox.localToGlobal(Offset.zero, ancestor: context.findRenderObject());
+        scrollController.animateTo(
+          scrollController.offset + position.dy,
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
+  }
+
+  int selectedExperienceIndex = 0;
+  void updateExperienceIndex(int value){
+    selectedExperienceIndex = value;
+    notifyListeners();
+  }
 
   /// Download resume
   void downloadFileWeb() {
@@ -25,6 +50,7 @@ class MainController extends ChangeNotifier{
     anchor.remove();
   }
 
+  /// Data and firbase call
   AboutMe aboutMeData = AboutMe();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   Future<void> getFirebaseData() async{
